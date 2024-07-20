@@ -1,6 +1,6 @@
-def sumar(a, b):
+def sum(a, b):
     return a + b
 
 
 if __name__ == "__main__":
-    print(sumar(5, 3))
+    print(sum(5, 3))
