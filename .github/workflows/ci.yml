@@ -18,4 +18,5 @@ jobs:
                   python-version: 3.12
 
             - name: Run tests
-              run: python -m unittest Sprint1/Lab5/sum_test.py
+              run: cd Sprint1/Lab5
+              run: python -m unittest sum_test.py
