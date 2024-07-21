@@ -20,4 +20,7 @@ jobs:
             - name: Run tests
               run: |
                   cd Sprint1/Lab5
-                  python -m unittest discover
+                  python -m unittest sum_test.py
+                  python -m unittest subtract_test.py
+                  python -m unittest multiply_test.py
+                  python -m unittest division_test.py
