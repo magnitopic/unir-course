@@ -1,0 +1,24 @@
+{
+	"educacion": [
+		{
+			"id_candidato": {
+				"$oid": "6534f55495f7d319fc4bd986"
+			},
+			"institucion": "Centro Formativo DAW",
+			"titulo": "Tecnico Superior en Desarrollo de Aplicaciones Web",
+			"fecha_inicio": "2015-02-01",
+			"fecha_fin": "2019-12-15",
+			"descripcion": "Formación en desarrollo de aplicaciones web, tanto front-end como back-end."
+		},
+		{
+			"id_candidato": {
+				"$oid": "6534f55495f7d319fc4bd986"
+			},
+			"institucion": "Instituto Tecnológico",
+			"titulo": "Técnico en Redes",
+			"fecha_inicio": "2016-03-01",
+			"fecha_fin": "2018-11-30",
+			"descripcion": "Formación técnica en administración y configuración de redes informáticas."
+		}
+	]
+}

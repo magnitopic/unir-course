@@ -1,0 +1,22 @@
+{
+	"recomendaciones": [
+		{
+			"id_candidato": {
+				"$oid": "6534f55495f7d319fc4bd986"
+			},
+			"recomendador": "Enrique López",
+			"relacion": "Ex-Jefe",
+			"fecha": "2023-01-15",
+			"comentario": "Excelente trabajador, siempre puntual y comprometido con sus tareas."
+		},
+		{
+			"id_candidato": {
+				"$oid": "6534f55495f7d319fc4bd986"
+			},
+			"recomendador": "Ana Martínez",
+			"relacion": "Profesora DAW",
+			"fecha": "2022-11-20",
+			"comentario": "Gran alumno, muy dedicado y con gran capacidad de aprendizaje."
+		}
+	]
+}
