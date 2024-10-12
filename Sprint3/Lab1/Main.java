@@ -3,7 +3,8 @@ package Sprint3.Lab1;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Sprint3.Lab1.Vehicle;
+import Sprint3.alaparic.src.main.java.com.alaparic.carregistry.model.Car;
+import Sprint3.alaparic.src.main.java.com.alaparic.carregistry.model.Vehicle;
 
 public class Main {
 

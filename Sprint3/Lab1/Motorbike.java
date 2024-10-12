@@ -1,5 +1,7 @@
 package Sprint3.Lab1;
 
+import Sprint3.alaparic.src.main.java.com.alaparic.carregistry.model.Vehicle;
+
 public class Motorbike extends Vehicle {
 	Integer engineDisplacement;
 	Boolean hasSidecar;

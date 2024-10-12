@@ -1,11 +1,17 @@
-package Sprint3.Lab1;
+package com.alaparic.carregistry.model;
 
-// inherits form Vehicle
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class Car extends Vehicle {
 	Integer numberOfDoors;
 	Boolean inConvertible;
 
 	// constructor
+
+	public Car() {}
 
 	public Car(String brand, String model, Integer year, Integer numberOfDoors, Boolean inConvertible) {
 		super(brand, model, year);

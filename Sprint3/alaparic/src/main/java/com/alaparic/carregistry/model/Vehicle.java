@@ -1,4 +1,4 @@
-package Sprint3.Lab1;
+package com.alaparic.carregistry.model;
 
 public class Vehicle {
 	String brand;
@@ -6,6 +6,8 @@ public class Vehicle {
 	int year;
 
 	// constructor
+	public Vehicle() {}
+
 	public Vehicle(String brand, String model, int year) {
 		this.brand = brand;
 		this.model = model;
