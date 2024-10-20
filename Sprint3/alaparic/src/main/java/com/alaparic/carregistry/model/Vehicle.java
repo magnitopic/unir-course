@@ -1,56 +1,68 @@
 package com.alaparic.carregistry.model;
 
 public class Vehicle {
-	String brand;
-	String model;
-	int year;
+    String brand;
+    String model;
+    int year;
+    Integer id;
 
-	// constructor
-	public Vehicle() {}
 
-	public Vehicle(String brand, String model, int year) {
-		this.brand = brand;
-		this.model = model;
-		this.year = year;
-	}
+    // constructor
+    public Vehicle() {
+    }
 
-	// getters and setters
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
 
-	public static void startEngine() {
-		System.out.println("Engine started");
-	}
+    // getters and setters
 
-	public String getBrand() {
-		return brand;
-	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getModel() {
-		return model;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setModel(String model) {
-		this.model = model;
-	}
+    public static void startEngine() {
+        System.out.println("Engine started");
+    }
 
-	public int getYear() {
-		return year;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	// methods
-	public static void accelerate(int speed) {
-		System.out.println("Accelerating");
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public static void brake(int speed) {
-		System.out.println("Breaking");
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // methods
+    public static void accelerate(int speed) {
+        System.out.println("Accelerating");
+    }
+
+    public static void brake(int speed) {
+        System.out.println("Breaking");
+    }
 
 }
