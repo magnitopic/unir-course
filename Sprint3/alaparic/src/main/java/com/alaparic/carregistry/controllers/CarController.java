@@ -56,3 +56,6 @@ public class CarController {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+}
