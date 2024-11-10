@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.CompletableFuture;
+
 @RestController
 @RequestMapping("/cars")
 @Slf4j
@@ -16,15 +18,14 @@ public class CarController {
     private CarService carService;
 
     @PostMapping
-    public ResponseEntity<Car> addCar(@RequestBody Car car) {
-        log.info("Adding new car");
-        try {
-            Car savedCar = carService.saveCar(car);
-            return ResponseEntity.ok(savedCar);
-        } catch (Exception e) {
-            log.error("Error saving car", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public CompletableFuture<ResponseEntity<Car>> addCar(@RequestBody Car car) {
+        log.info("Adding new car asynchronously");
+        return carService.saveCarAsync(car)
+                .thenApply(ResponseEntity::ok)
+                .exceptionally(e -> {
+                    log.error("Error saving car", e);
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                });
     }
 
     @GetMapping("/{id}")
@@ -36,26 +37,24 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Car> updateCar(@PathVariable Integer id, @RequestBody Car car) {
-        log.info("Updating car with id: {}", id);
-        try {
-            return carService.updateCar(id, car)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
-        } catch (Exception e) {
-            log.error("Error updating car", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public CompletableFuture<ResponseEntity<Car>> updateCar(@PathVariable Integer id, @RequestBody Car car) {
+        log.info("Updating car with id: {} asynchronously", id);
+        return carService.updateCarAsync(id, car)
+                .thenApply(optionalCar -> optionalCar
+                        .map(ResponseEntity::ok)
+                        .orElse(ResponseEntity.notFound().build()))
+                .exceptionally(e -> {
+                    log.error("Error updating car", e);
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                });
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCar(@PathVariable Integer id) {
-        log.info("Deleting car with id: {}", id);
-        if (carService.getCarById(id).isPresent()) {
-            carService.deleteCar(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public CompletableFuture<ResponseEntity<Void>> deleteCar(@PathVariable Integer id) {
+        log.info("Deleting car with id: {} asynchronously", id);
+        return carService.getCarById(id)
+                .map(car -> carService.deleteCarAsync(id)
+                        .thenApply(v -> ResponseEntity.ok().<Void>build()))
+                .orElse(CompletableFuture.completedFuture(ResponseEntity.notFound().build()));
     }
 }
